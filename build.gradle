@@ -107,17 +107,38 @@ task baseClean(type: Delete) {
 def fatClassifierName = 'fat'
 def thinClassifierName = 'thin'
 
-task fatJar(type: Jar) {
+//task fatJar(type: Jar) {
+//
+//    archiveClassifier = fatClassifierName
+//    archiveName("${project.name}-${project.version}-${fatClassifierName}.jar")
+//    from 'custom', 'build/classes/java/main', 'src/main/resources'
+//
+//    manifest {
+//        attributes("ConnectorBundle-FrameworkVersion": "1.4.3.11",
+//                "ConnectorBundle-Version": versionNumber,
+//                "ConnectorBundle-Name": project.name)
+//    }
+//}
 
-    archiveClassifier = fatClassifierName
-    archiveName("${project.name}-${project.version}-${fatClassifierName}.jar")
-    from 'custom', 'build/classes/java/main', 'src/main/resources'
+task fatJar(type: Jar) {
+    archiveClassifier.set(fatClassifierName)
+    archiveFileName.set("${project.name}-${project.version}-${fatClassifierName}.jar")
+
+    from sourceSets.main.output
+
+    from(configurations.runtimeClasspath) {
+        into "lib"
+    }
 
     manifest {
-        attributes("ConnectorBundle-FrameworkVersion": "1.4.3.11",
+        attributes(
+                "ConnectorBundle-FrameworkVersion": "1.4.3.11",
                 "ConnectorBundle-Version": versionNumber,
-                "ConnectorBundle-Name": project.name)
+                "ConnectorBundle-Name": project.name,
+        )
     }
+
+    duplicatesStrategy = DuplicatesStrategy.FAIL
 }
 
 task thinJar(type: Jar) {
