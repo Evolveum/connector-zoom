@@ -34,8 +34,12 @@ public class ZoomSchemaDescriptionsTest {
         schema.getObjectClassInfo().stream()
             .collect(Collectors.toMap(ObjectClassInfo::getType, ObjectClassInfo::getDescription));
 
-    assertEquals("Zoom user account", descriptions.get("ZoomUser"));
-    assertEquals("Zoom group", descriptions.get("ZoomGroup"));
+    assertEquals(
+        "Represents a user managed under the connected Zoom account, including account and Zoom Phone properties.",
+        descriptions.get("ZoomUser"));
+    assertEquals(
+        "Represents a user group under the connected Zoom account and its membership relationships. It is distinct from a Zoom contact group.",
+        descriptions.get("ZoomGroup"));
   }
 
   @Test

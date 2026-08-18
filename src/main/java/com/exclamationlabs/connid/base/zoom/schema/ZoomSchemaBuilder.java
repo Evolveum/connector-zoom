@@ -35,8 +35,12 @@ public class ZoomSchemaBuilder extends DefaultConnectorSchemaBuilder<ZoomConfigu
   private static final Map<String, String> OBJECT_CLASS_DESCRIPTIONS = new LinkedHashMap<>();
 
   static {
-    OBJECT_CLASS_DESCRIPTIONS.put("ZoomUser", "Zoom user account");
-    OBJECT_CLASS_DESCRIPTIONS.put("ZoomGroup", "Zoom group");
+    OBJECT_CLASS_DESCRIPTIONS.put(
+        "ZoomUser",
+        "Represents a user managed under the connected Zoom account, including account and Zoom Phone properties.");
+    OBJECT_CLASS_DESCRIPTIONS.put(
+        "ZoomGroup",
+        "Represents a user group under the connected Zoom account and its membership relationships. It is distinct from a Zoom contact group.");
   }
 
   @Override
