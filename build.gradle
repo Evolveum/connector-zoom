@@ -25,6 +25,9 @@ repositories {
         url "https://nexus.evolveum.com/nexus/content/repositories/releases/"
     }
     maven {
+        url "https://nexus.evolveum.com/nexus/content/repositories/snapshots/"
+    }
+    maven {
         url "https://us-east1-maven.pkg.dev/provision-general-operations/provision-public"
     }
 }
@@ -56,7 +59,9 @@ dependencies {
 
     // Required for MidPoint runtime
     runtimeOnly 'org.codehaus.groovy:groovy:2.5.21'
-    runtimeOnly 'com.evolveum.polygon:connector-common:1.5.0.0'
+    runtimeOnly('com.evolveum.polygon:connector-common:1.5.0.0') {
+        exclude group: 'net.tirasa.connid', module: 'connector-framework'
+    }
 
     // HTTP/RESTful support
     implementation 'com.google.code.gson:gson:2.10.1'
@@ -64,11 +69,16 @@ dependencies {
 
     implementation 'commons-codec:commons-codec:1.15'
 
-    implementation "com.exclamationlabs.connid:connector-base:${base_connector_version}-+"
+    implementation("com.exclamationlabs.connid:connector-base:${base_connector_version}-+") {
+        exclude group: 'net.tirasa.connid', module: 'connector-framework'
+    }
+
+    compileOnly 'net.tirasa.connid:connector-framework:1.7.0.0-SNAPSHOT'
 
     testImplementation "com.exclamationlabs.connid:connector-base-test-support:${test_connector_version}-+"
 
-    testImplementation 'net.tirasa.connid:connector-framework-internal:1.5.0.0'
+    testImplementation 'net.tirasa.connid:connector-framework:1.7.0.0-SNAPSHOT'
+    testImplementation 'net.tirasa.connid:connector-framework-internal:1.7.0.0-SNAPSHOT'
 
     constraints {
         implementation("org.apache.commons:commons-lang3:3.18.0")
@@ -179,4 +189,3 @@ publishing {
 test {
     useJUnitPlatform() {}
 }
-

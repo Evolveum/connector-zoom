@@ -23,6 +23,7 @@ import com.exclamationlabs.connid.base.zoom.adapter.ZoomGroupsAdapter;
 import com.exclamationlabs.connid.base.zoom.adapter.ZoomUsersAdapter;
 import com.exclamationlabs.connid.base.zoom.configuration.ZoomConfiguration;
 import com.exclamationlabs.connid.base.zoom.driver.rest.ZoomDriver;
+import com.exclamationlabs.connid.base.zoom.schema.ZoomSchemaBuilder;
 import java.util.Collections;
 import java.util.Map;
 import org.identityconnectors.framework.spi.ConnectorClass;
@@ -34,6 +35,7 @@ public class ZoomConnector extends BaseFullAccessConnector<ZoomConfiguration> {
 
   public ZoomConnector() {
     super(ZoomConfiguration.class);
+    setConnectorSchemaBuilder(new ZoomSchemaBuilder());
     setAuthenticator(
         (Authenticator)
             new OAuth2TokenClientCredentialsAuthenticator() {
