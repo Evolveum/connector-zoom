@@ -59,8 +59,7 @@ dependencies {
 
     // Required for MidPoint runtime
     runtimeOnly 'org.codehaus.groovy:groovy:2.5.21'
-    runtimeOnly('com.evolveum.polygon:connector-common:1.5.0.0') {
-        exclude group: 'net.tirasa.connid', module: 'connector-framework'
+    runtimeOnly('com.evolveum.polygon:connector-common:1.5.3.0-SNAPSHOT') {
     }
 
     // HTTP/RESTful support
@@ -73,12 +72,11 @@ dependencies {
         exclude group: 'net.tirasa.connid', module: 'connector-framework'
     }
 
-    compileOnly 'net.tirasa.connid:connector-framework:1.7.0.0-SNAPSHOT'
+    compileOnly 'net.tirasa.connid:connector-framework:1.7.0.1-SNAPSHOT'
 
     testImplementation "com.exclamationlabs.connid:connector-base-test-support:${test_connector_version}-+"
 
-    testImplementation 'net.tirasa.connid:connector-framework:1.7.0.0-SNAPSHOT'
-    testImplementation 'net.tirasa.connid:connector-framework-internal:1.7.0.0-SNAPSHOT'
+    testImplementation 'com.evolveum.polygon:connector-common:1.5.3.0-SNAPSHOT'
 
     constraints {
         implementation("org.apache.commons:commons-lang3:3.18.0")
