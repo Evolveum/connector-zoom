@@ -12,7 +12,7 @@
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-*/
+ */
 
 package com.exclamationlabs.connid.base.zoom.model;
 
@@ -24,7 +24,7 @@ public class ZoomUser implements IdentityModel {
 
   @SerializedName("created_at")
   private String createdAt;
-
+  private String dept;
   private String email;
   private ZoomFeature feature;
 
@@ -37,6 +37,8 @@ public class ZoomUser implements IdentityModel {
   private transient Set<String> groupsToAdd;
   private transient Set<String> groupsToRemove;
   private String id;
+  @SerializedName("job_title")
+  private String jobTitle;
   private transient ZoomPhoneUserProfile outboundAdd;
   private transient ZoomPhoneUserProfile outboundRemove;
   private String language;
@@ -67,6 +69,10 @@ public class ZoomUser implements IdentityModel {
 
   public String getCreatedAt() {
     return createdAt;
+  }
+
+  public String getDept() {
+    return dept;
   }
 
   public String getEmail() {
@@ -100,6 +106,10 @@ public class ZoomUser implements IdentityModel {
   @Override
   public String getIdentityIdValue() {
     return getId();
+  }
+
+  public String getJobTitle() {
+    return jobTitle;
   }
 
   @Override
@@ -171,6 +181,10 @@ public class ZoomUser implements IdentityModel {
     this.createdAt = createdAt;
   }
 
+  public void setDept(String dept) {
+    this.dept = dept;
+  }
+
   public void setEmail(String email) {
     this.email = email;
   }
@@ -197,6 +211,10 @@ public class ZoomUser implements IdentityModel {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public void setJobTitle(String jobTitle) {
+    this.jobTitle = jobTitle;
   }
 
   public void setOutboundAdd(ZoomPhoneUserProfile outboundAdd) {
