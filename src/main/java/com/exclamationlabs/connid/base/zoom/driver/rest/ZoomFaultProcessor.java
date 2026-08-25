@@ -115,21 +115,4 @@ public class ZoomFaultProcessor implements RestFaultProcessor {
     }
     return true;
   }
-
-  private Boolean checkRecognizedFaultMessages(ErrorResponse faultData) {
-    if (faultData != null
-        && faultData.getMessage() != null
-        && (!faultData.getMessage().isEmpty())) {
-      String message = faultData.getMessage();
-      if (message.contains("User does not exist")) {
-        Logger.info(this, message);
-        return true;
-      } else {
-        Logger.error(this, message);
-        throw new ConnectorException(
-            "Unhandled Exception Received from Zoom.  Message: " + faultData.getMessage());
-      }
-    }
-    return false;
-  }
 }
