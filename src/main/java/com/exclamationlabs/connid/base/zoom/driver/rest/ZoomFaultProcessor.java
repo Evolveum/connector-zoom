@@ -92,7 +92,8 @@ public class ZoomFaultProcessor implements RestFaultProcessor {
     switch (faultData.getCode()) {
       case PAID_SUBSCRIPTION_REQUIRED:
         throw new PaidAccountRequiredException(faultData.getMessage());
-
+      case USER_DISABLED:
+        throw new UserDisabledException(faultData.getMessage());
       case USER_NOT_FOUND:
       case GROUP_NOT_FOUND:
         return false;
