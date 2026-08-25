@@ -371,6 +371,10 @@ public class ZoomUsersInvocator implements DriverInvocator<ZoomDriver, ZoomUser>
         user.setFeature(feature);
         ZoomPhoneSite site = getZoomPhoneSiteFromId(driver, phoneProfile.getSiteId());
         user.setSite(site);
+      } else {
+        // set to false for shadow caching purposes
+        feature.setZoomPhone(false);
+        user.setFeature(feature);
       }
     }
   }
