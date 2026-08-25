@@ -73,7 +73,7 @@ public class ZoomUsersAdapter extends BaseAdapter<ZoomUser, ZoomConfiguration> {
     result.add(new ConnectorAttribute(SITE_ID.name(), STRING));
     result.add(new ConnectorAttribute(SITE_NAME.name(), STRING));
     result.add(new ConnectorAttribute(SITE_CODE.name(), INTEGER));
-    result.add(new ConnectorAttribute(ZOOM_ONE_FEATURE_TYPE.name(), STRING, NOT_UPDATEABLE));
+    result.add(new ConnectorAttribute(ZOOM_ONE_TYPE.name(), STRING, NOT_UPDATEABLE));
     // result.add(new ConnectorAttribute(SMS_ENABLED.name(), BOOLEAN));
     return result;
   }
@@ -186,6 +186,8 @@ public class ZoomUsersAdapter extends BaseAdapter<ZoomUser, ZoomConfiguration> {
     user.getSite()
         .setName(
             AdapterValueTypeConverter.getSingleAttributeValue(String.class, attributes, SITE_NAME));
+
+    user.setZoomOneType(AdapterValueTypeConverter.getSingleAttributeValue(Long.class, attributes, ZOOM_ONE_TYPE));
     return user;
   }
 
@@ -243,6 +245,8 @@ public class ZoomUsersAdapter extends BaseAdapter<ZoomUser, ZoomConfiguration> {
       attributes.add(AttributeBuilder.build(SITE_CODE.name(), user.getSite().getCode()));
       attributes.add(AttributeBuilder.build(SITE_NAME.name(), user.getSite().getName()));
     }
+
+    attributes.add(AttributeBuilder.build(ZOOM_ONE_TYPE.name(), user.getZoomOneType()));
 
     return attributes;
   }

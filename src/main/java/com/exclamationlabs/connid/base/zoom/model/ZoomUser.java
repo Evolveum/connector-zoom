@@ -64,6 +64,8 @@ public class ZoomUser implements IdentityModel {
   private String timezone;
   private Integer type;
   private String verified;
+  @SerializedName("zoom_one_type")
+  private Long zoomOneType;
 
   public String getCreatedAt() {
     return createdAt;
@@ -167,6 +169,10 @@ public class ZoomUser implements IdentityModel {
     return verified;
   }
 
+  public Long getZoomOneType() {
+    return zoomOneType;
+  }
+
   public void setCreatedAt(String createdAt) {
     this.createdAt = createdAt;
   }
@@ -257,5 +263,9 @@ public class ZoomUser implements IdentityModel {
 
   public void setVerified(String verified) {
     this.verified = verified;
+  }
+
+  public void setZoomOneType(Long zoomOneType) {
+    this.zoomOneType = zoomOneType;
   }
 }

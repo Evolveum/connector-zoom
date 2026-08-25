@@ -4,12 +4,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class ZoomFeature {
   @SerializedName("zoom_one_type")
-  private Integer zoomOneType;
+  private Long zoomOneType;
 
   @SerializedName("zoom_phone")
   private Boolean zoomPhone;
 
-  public Integer getZoomOneType() {
+  public Long getZoomOneType() {
     return zoomOneType;
   }
 
@@ -17,7 +17,7 @@ public class ZoomFeature {
     return zoomPhone;
   }
 
-  public void setZoomOneType(Integer zoomOneType) {
+  public void setZoomOneType(Long zoomOneType) {
     this.zoomOneType = zoomOneType;
   }
 
